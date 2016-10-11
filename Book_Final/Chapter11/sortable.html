@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Draggable demo</title>
+    
+    <style type="text/css" media="screen">
+      body {
+        font-family: 'Trebuchet MS', sans-serif;
+      }
+    
+      #container {
+        width: 200px;
+        list-style-type: none;
+        margin-left: 0;
+        padding-left: 0;
+      }
+      
+        #container li, .foo {
+          background-color: #f9f9f9;
+          border: 1px solid #ccc;
+          padding: 3px 5px;
+          padding-left: 0;
+          margin: 10px 0;
+        }
+        
+        #container li .handle {
+          background-color: #090;
+          color: #fff;
+          font-weight: bold;
+          padding: 3px;
+        }
+        
+      #container, #drop_zone {
+        width: 200px;
+        height: 300px;
+        list-style-type: none;
+        margin-left: 0;
+        margin-right: 20px;
+        float: left;
+        padding: 0;
+        border: 2px dashed #999;
+      }        
+        
+    </style>
+    
+    <script src="../js/prototype.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/scriptaculous.js" type="text/javascript" charset="utf-8"></script>
+    
+    <script type="text/javascript">
+    document.observe("dom:loaded", function() {
+      Sortable.create('container', { scroll: window });
+    });
+    </script>
+  </head>
+  <body>
+    
+  <ul id="container">
+    <li class="foo" id="item_1">Lorem</li>
+    <li class="foo" id="item_2">Ipsum</li>
+    <li class="foo" id="item_3">Dolor</li>
+    <li class="foo" id="item_4">Sit</li>
+    <li class="foo" id="item_5">Amet</li>
+  </ul>
+
+  </body>
+</html>

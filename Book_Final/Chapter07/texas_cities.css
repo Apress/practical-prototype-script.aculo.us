@@ -1,0 +1,32 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 87.5%;
+}
+
+table {
+  
+}
+
+  table thead td { 
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  table thead th { 
+    text-align: left;
+    padding: 2px 5px;
+  }
+  
+    table thead th.number { text-align: right;  }
+    table thead th.code   { text-align: center; }
+    
+  table tbody td,
+  table tfoot td  { padding: 2px 5px; }
+
+    table tbody td.number, 
+    table tfoot td.number  { text-align: right;  }
+    table tbody td.code,
+    table tfoot td.code    { text-align: center; }  
+    
+table tfoot tr { font-weight: bold; }
+  

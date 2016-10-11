@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Fantasy Football</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />    
+    <script src="../js/prototype.js" type="text/javascript"></script>
+    <script src="../js/scriptaculous.js" type="text/javascript"></script>
+    
+    <script src="score_broadcaster.js" type="text/javascript"></script>
+    <script src="totaler.js" type="text/javascript"></script>
+    
+    <script type="text/javascript" charset="utf-8">
+      function updateTeam(table, json) {
+        table = $(table);
+        var stats;
+        for (var position in json.players) {
+          stats = json.players[position];
+          
+          // find the row with the class name that matches the JSON property name
+          var row = table.down('.' + position);
+
+          // update the statistical summary
+          row.down('td.summary').update(stats.summary);
+
+          var scoreCell = row.down('td.score');
+
+          // did the player's score increase since the last update?
+          var shouldHighlight = stats.points > Number(scoreCell.innerHTML);
+
+          scoreCell.update(stats.points);
+
+          if (shouldHighlight) {
+            new Effect.Highlight(row);
+          }
+        }
+      }
+      
+      document.observe("dom:loaded", function() {
+        var team1totaler = new Totaler('team_1', 'team_1_total', { selector: 'tbody .score' });
+        var team2totaler = new Totaler('team_2', 'team_2_total', { selector: 'tbody .score' });
+      
+        document.observe("score:updated", function(event) {
+          var json = event.memo;
+      
+          updateTeam($('team_1_container'), json.team_1);
+          team1totaler.updateTotal();
+      
+          updateTeam($('team_2_container'), json.team_2);
+          team2totaler.updateTotal();
+        });
+      });
+
+    </script>
+  </head>
+  
+  <body>
+    <div id="wrapper">
+    
+      <h1>Box Score</h1>
+    
+    
+      <div id="teams">
+      
+        <div id="team_1_container">
+          <h2>The Fighting Federalists</h2>
+          <table id="team_1">
+            <thead>
+              <tr>
+                <th class="pos" title="Position">Pos.</th>
+                <th>Name</th>
+                <th>Stats</th>
+                <th class="score">Points</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <td colspan="3" class="total">Total</td>
+                <td id="team_1_total" class="score"></td>
+              </tr>
+            </tfoot>
+            <tbody>
+              <tr class="QB">
+                <td class="pos">QB</td>
+                <td>Alexander Hamilton</td>
+                <td class="summary"></td>
+                <td class="score">0</td>
+              </tr>
+              <tr class="RB1">
+                <td class="pos">RB</td>
+                <td>James Madison</td>
+                <td class="summary"></td>
+                <td class="score">0</td>
+              </tr>
+              <tr class="RB2">
+                <td class="pos">RB</td>
+                <td>John Jay</td>
+                <td class="summary"></td>
+                <td class="score">0</td>
+              </tr>
+              <tr class="WR1">
+                <td class="pos">WR</td>
+                <td>John Marshall</td>
+                <td class="summary"></td>
+                <td class="score">0</td>
+              </tr>
+              <tr class="WR2">
+                <td class="pos">WR</td>
+                <td>Daniel Webster</td>
+                <td class="summary"></td>
+                <td class="score">0</td>
+              </tr>
+              <tr class="TE">
+                <td class="pos">TE</td>
+                <td>Samuel Chase</td>
+                <td class="summary"></td>
+                <td class="score">0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div> <!-- #team_1_container -->
+      
+        <div id="team_2_container">
+          <h2>Washington's Generals</h2>
+          <table id="team_2">
+            <thead>
+              <tr>
+                <th class="pos" title="Position">Pos.</th>
+                <th>Name</th>
+                <th>Stats</th>
+                <th class="score">Points</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <td colspan="3" class="total">Total</td>
+                <td id="team_2_total" class="score"></td>
+              </tr>
+            </tfoot>
+            <tbody>
+              <tr class="QB">
+                <td class="pos">QB</td>
+                <td>George Washington</td>
+                <td class="summary"></td>
+                <td class="score">0</td>
+              </tr>
+              <tr class="RB1">
+                <td class="pos">RB</td>
+                <td>Ulysses S. Grant</td>
+                <td class="summary"></td>
+                <td class="score">0</td>
+              </tr>
+              <tr class="RB2">
+                <td class="pos">RB</td>
+                <td>Wm. Henry Harrison</td>
+                <td class="summary"></td>
+                <td class="score">0</td>
+              </tr>
+              <tr class="WR1">
+                <td class="pos">WR</td>
+                <td>Andrew Jackson</td>
+                <td class="summary"></td>
+                <td class="score">0</td>
+              </tr>
+              <tr class="WR2">
+                <td class="pos">WR</td>
+                <td>Dwight D. Eisenhower</td>
+                <td class="summary"></td>
+                <td class="score">0</td>
+              </tr>
+              <tr class="TE">
+                <td class="pos">TE</td>
+                <td>Douglas MacArthur</td>
+                <td class="summary"></td>
+                <td class="score">0</td>
+              </tr>
+            </tbody>
+          </table>      </div> <!-- #team_2_container -->
+    
+      </div> <!-- #teams -->
+      
+    </div> <!-- #wrapper -->
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Andrew's Breakfast Log</title>
+    
+    <style type="text/css" media="screen">
+      #breakfast_history { 
+        color: green; 
+        border: 1px solid #cfc; 
+        padding: 5px 0 5px 40px;
+      }
+      
+      #error_log {
+        color: red; 
+        border: 1px solid #edd; 
+        padding: 5px 0 5px 40px;
+      }
+    </style>
+    
+    <script src="../js/prototype.js" type="text/javascript"></script>
+    <script src="breakfast.js" type="text/javascript"></script>
+  </head>
+  
+  <body>
+    <h1>Andrew's Breakfast Log</h1>
+
+    <h2>Breakfast History</h2>
+    <ul id="breakfast_history"></ul>
+    
+    <h2>Errors</h2>
+    <ul id="error_log"></ul>
+      
+      
+    <h1 id="toggler">Log Your Breakfast</h1>
+    <form id="entry" method="post" action="breakfast.php">      
+      <p>
+        I just ate
+         <input type="text" id="food_type" name="food_type" 
+         size="15" />.
+        My meal was
+         <input type="text" id="taste" name="taste" size="15" />.
+      </p>
+      <input type="submit" name="submit" value="Post Entry" />
+    </form>
+  
+  </body>
+</html>

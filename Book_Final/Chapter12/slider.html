@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Chapter 12</title>
+    
+    
+    <script src="../js/prototype.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/scriptaculous.js" type="text/javascript" charset="utf-8"></script>
+
+    <style type="text/css" media="screen">
+      body {
+        font-family: "Lucida Grande", Tahoma, sans-serif;
+        font-size: 67.5%;
+      }
+      
+      #track {
+        width: 300px;
+        height: 25px;
+        border: 2px solid #555;
+      }
+      
+      #slider {
+        width: 50px;
+        height: 25px;
+        background-color: #ccc;
+        font-size: 20px;
+        text-align: center;
+      }
+      
+      #color_picker li {
+        border: 2px solid #ccc;
+      }
+      
+      #color_picker span {
+        display: block;
+        width: 25px;
+        height: 12px;
+      }
+      
+      
+    </style>
+
+    <script type="text/javascript">
+      document.observe('dom:loaded', function() {
+        new Control.Slider('slider', 'track');
+      });
+    </script>
+    
+
+  </head>
+  <body>
+    
+    <div id="track">
+      <div id="slider"></div>
+    </div>
+    
+    <div id="log">
+      
+    </div>
+
+  </body>
+</html>

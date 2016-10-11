@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Andrew's Breakfast Log</title>
+    <script src="../js/prototype.js" type="text/javascript"></script>
+  </head>
+  
+  <body>
+
+    <form id="blog_comment">
+      <label for="comment_name">Name:</label><br />
+      <input id="comment_name" name="comment_name" type="text" /><br />
+      
+      <label for="comment_text">Comment:</label><br />
+      <textarea id="comment_text" name="comment_text"></textarea>
+    </form>
+    
+    <h6>Preview:</h6>
+    <div id="live_preview"></div>
+    
+    <script type="text/javascript" charset="utf-8">
+      function updateLivePreview() {
+        var commentText = $('comment_text').value.stripTags();
+        $('live_preview').update(commentText);
+      }
+
+      Event.observe(window, 'load', function() {
+        $('comment_text').observe('keyup', updateLivePreview);
+      });
+      
+    </script>
+        
+  </body>
+</html>

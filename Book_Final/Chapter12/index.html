@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Chapter 12</title>
+    <script src="../js/prototype.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/scriptaculous.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript">
+      document.observe('dom:loaded', function() {
+        new Ajax.Autocompleter('player_name', 'player_suggestions',
+         'autocomplete_players.php');
+      });
+    </script>
+    
+    <style type="text/css" media="screen">
+      body {
+        font-family: "Lucida Grande", Tahoma, sans-serif;
+        font-size: 67.5%;
+      }
+         
+      #player_suggestions {
+        border: 1px solid #999;
+        background-color: #fff;
+      }
+      
+        #player_suggestions ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+        }
+        
+          #player_suggestions li {
+            padding: 2px 3px;
+          }
+      
+          #player_suggestions li.selected {
+            color: #fff;
+            background-color: #039;
+          }
+          
+           #player_suggestions li strong {
+             text-decoration: underline;
+           }
+              
+    </style>
+  </head>
+  <body>
+    <input type="text" name="player_name" id="player_name" size="30" />
+    <div id="player_suggestions"></div>    
+  </body>
+</html>
